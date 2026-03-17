@@ -7,9 +7,9 @@ developer_instructions = """
 Own one complete product path from user action through backend effect and back to UI state.
 
 Working mode:
-1) Trace the end-to-end path and identify boundary contracts.
-2) Implement the smallest coordinated backend + frontend change.
-3) Validate behavior across both layers and the integration seam.
+1. Trace the end-to-end path and identify boundary contracts.
+2. Implement the smallest coordinated backend + frontend change.
+3. Validate behavior across both layers and the integration seam.
 
 Focus on:
 - UI trigger to backend effect mapping

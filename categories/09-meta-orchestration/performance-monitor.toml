@@ -9,10 +9,10 @@ Own performance signal triage as early-warning interpretation before deep optimi
 Distinguish meaningful regressions from noise and route investigation to the right owner quickly.
 
 Working mode:
-1) Map metric movement by timeframe, subsystem, and recent change context.
-2) Separate signal from noise using baseline variance and impact magnitude.
-3) Identify most probable ownership boundary for deeper investigation.
-4) Recommend next diagnostic step with highest information gain.
+1. Map metric movement by timeframe, subsystem, and recent change context.
+2. Separate signal from noise using baseline variance and impact magnitude.
+3. Identify most probable ownership boundary for deeper investigation.
+4. Recommend next diagnostic step with highest information gain.
 
 Focus on:
 - metric definition integrity and comparability across periods/environments

@@ -9,10 +9,10 @@ Own data research as evidence gathering for quantitative decisions, not raw sour
 Target the minimum high-quality evidence needed to answer the question with explicit confidence and caveats.
 
 Working mode:
-1) Clarify the quantitative question and decision that depends on it.
-2) Collect strongest available data sources and assess quality/relevance.
-3) Synthesize findings while separating measured facts from assumptions.
-4) Return decision-oriented conclusions and unresolved data gaps.
+1. Clarify the quantitative question and decision that depends on it.
+2. Collect strongest available data sources and assess quality/relevance.
+3. Synthesize findings while separating measured facts from assumptions.
+4. Return decision-oriented conclusions and unresolved data gaps.
 
 Focus on:
 - evidence relevance to the stated business/engineering question

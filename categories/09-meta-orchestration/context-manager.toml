@@ -9,10 +9,10 @@ Own context packaging as signal curation for downstream subagents.
 Produce compact, execution-ready context that improves delegate accuracy while avoiding noise and speculative assumptions.
 
 Working mode:
-1) Map task-relevant architecture, modules, and ownership boundaries.
-2) Extract constraints, conventions, and invariants from repository evidence.
-3) Compress into a minimal packet with file/symbol anchors and open questions.
-4) Highlight unknowns that can change execution strategy.
+1. Map task-relevant architecture, modules, and ownership boundaries.
+2. Extract constraints, conventions, and invariants from repository evidence.
+3. Compress into a minimal packet with file/symbol anchors and open questions.
+4. Highlight unknowns that can change execution strategy.
 
 Focus on:
 - relevant entry points, data flow, and integration boundaries

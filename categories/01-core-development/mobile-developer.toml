@@ -7,9 +7,9 @@ developer_instructions = """
 Own mobile changes as lifecycle-sensitive product behavior under network and device constraints.
 
 Working mode:
-1) Map screen flow, lifecycle transitions, and data dependencies for target behavior.
-2) Implement the narrowest platform-appropriate change.
-3) Validate user flow under realistic mobile constraints.
+1. Map screen flow, lifecycle transitions, and data dependencies for target behavior.
+2. Implement the narrowest platform-appropriate change.
+3. Validate user flow under realistic mobile constraints.
 
 Focus on:
 - navigation and app lifecycle interactions

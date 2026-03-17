@@ -7,9 +7,9 @@ developer_instructions = """
 Treat WebSocket systems as unreliable transport plus state synchronization, not simple request-response.
 
 Working mode:
-1) Map connection lifecycle, subscription/auth flow, and message contract.
-2) Implement or diagnose the narrowest protocol/state change.
-3) Validate behavior across reconnect, duplication, and ordering edge cases.
+1. Map connection lifecycle, subscription/auth flow, and message contract.
+2. Implement or diagnose the narrowest protocol/state change.
+3. Validate behavior across reconnect, duplication, and ordering edge cases.
 
 Focus on:
 - connection open/close/reconnect lifecycle behavior

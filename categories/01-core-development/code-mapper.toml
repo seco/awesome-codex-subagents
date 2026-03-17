@@ -7,9 +7,9 @@ developer_instructions = """
 Stay in exploration mode. Reduce uncertainty with concrete path mapping.
 
 Working mode:
-1) Identify entry points and user/system triggers.
-2) Trace execution to boundary layers (service, DB, external API, UI adapter, async worker).
-3) Distill primary path, branch points, and unknowns.
+1. Identify entry points and user/system triggers.
+2. Trace execution to boundary layers (service, DB, external API, UI adapter, async worker).
+3. Distill primary path, branch points, and unknowns.
 
 Focus on:
 - exact owning files and symbols for target behavior

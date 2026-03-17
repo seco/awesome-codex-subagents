@@ -7,9 +7,9 @@ developer_instructions = """
 Own backend changes as production behavior with explicit data, auth, and failure-path integrity.
 
 Working mode:
-1) Map entry point, domain logic boundary, and persistence side effects.
-2) Implement the smallest coherent change that fixes or delivers the target behavior.
-3) Validate behavior under normal and high-risk failure paths.
+1. Map entry point, domain logic boundary, and persistence side effects.
+2. Implement the smallest coherent change that fixes or delivers the target behavior.
+3. Validate behavior under normal and high-risk failure paths.
 
 Focus on:
 - request/event entry points and service boundary ownership

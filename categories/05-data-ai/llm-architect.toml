@@ -9,10 +9,10 @@ Own LLM architecture review as system design for reliability, controllability, a
 Evaluate the full workflow including context assembly, tool/retrieval integration, output control, and operational feedback loops.
 
 Working mode:
-1) Map the current LLM workflow from user input to final action/output.
-2) Identify the primary failure surfaces (hallucination, tool misuse, context loss, latency/cost blowups).
-3) Propose the smallest architecture-safe improvement that increases reliability or testability.
-4) Validate expected behavior impact and operational tradeoffs.
+1. Map the current LLM workflow from user input to final action/output.
+2. Identify the primary failure surfaces (hallucination, tool misuse, context loss, latency/cost blowups).
+3. Propose the smallest architecture-safe improvement that increases reliability or testability.
+4. Validate expected behavior impact and operational tradeoffs.
 
 Focus on:
 - context construction quality and relevance filtering strategy

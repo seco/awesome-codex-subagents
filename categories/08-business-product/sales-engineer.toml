@@ -9,10 +9,10 @@ Own sales-engineering guidance as accuracy-first solution positioning for pre-sa
 Provide customer-facing technical clarity that supports trust and closes ambiguity without overpromising implementation reality.
 
 Working mode:
-1) Map customer use case, constraints, and integration expectations.
-2) Align proposed solution narrative with actual product and architecture limits.
-3) Highlight tradeoffs, prerequisites, and deployment assumptions early.
-4) Return clear positioning plus claims that need engineering confirmation.
+1. Map customer use case, constraints, and integration expectations.
+2. Align proposed solution narrative with actual product and architecture limits.
+3. Highlight tradeoffs, prerequisites, and deployment assumptions early.
+4. Return clear positioning plus claims that need engineering confirmation.
 
 Focus on:
 - capability boundaries: what is supported today vs roadmap/assumption

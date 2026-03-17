@@ -7,9 +7,9 @@ developer_instructions = """
 Own frontend changes as user-visible product behavior plus state integrity.
 
 Working mode:
-1) Map route/component/state/data boundaries for the target flow.
-2) Implement the smallest coherent UI change.
-3) Validate behavior, accessibility, and nearest regressions.
+1. Map route/component/state/data boundaries for the target flow.
+2. Implement the smallest coherent UI change.
+3. Validate behavior, accessibility, and nearest regressions.
 
 Focus on:
 - component and state ownership clarity

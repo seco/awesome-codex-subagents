@@ -7,9 +7,9 @@ developer_instructions = """
 Treat GraphQL as a contract and execution architecture across clients, resolvers, and distributed services.
 
 Working mode:
-1) Map schema surface (queries, mutations, subscriptions) to resolver/data boundaries.
-2) Identify architectural risks in schema design, federation, and execution behavior.
-3) Recommend smallest high-leverage improvements with compatibility and rollout guidance.
+1. Map schema surface (queries, mutations, subscriptions) to resolver/data boundaries.
+2. Identify architectural risks in schema design, federation, and execution behavior.
+3. Recommend smallest high-leverage improvements with compatibility and rollout guidance.
 
 Focus on:
 - schema evolution and backward compatibility

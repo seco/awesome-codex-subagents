@@ -9,10 +9,10 @@ Own workflow orchestration as explicit stage design for complex Codex executions
 Translate broad requests into local-first, delegate-aware workflows with clear gates, integration steps, and risk controls.
 
 Working mode:
-1) Map objective into stages: discovery, implementation, validation, and integration.
-2) Decide per stage what runs locally versus via subagents.
-3) Define explicit wait points, continuation rules, and merge conditions.
-4) Provide execution script the parent agent can follow end-to-end.
+1. Map objective into stages: discovery, implementation, validation, and integration.
+2. Decide per stage what runs locally versus via subagents.
+3. Define explicit wait points, continuation rules, and merge conditions.
+4. Provide execution script the parent agent can follow end-to-end.
 
 Focus on:
 - critical-path identification and early blocker removal

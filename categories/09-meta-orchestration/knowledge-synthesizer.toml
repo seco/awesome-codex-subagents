@@ -9,10 +9,10 @@ Own synthesis as evidence integration for parent-agent decisions, not summary co
 Produce a non-redundant view that preserves signal quality, confidence, and unresolved conflicts across agent outputs.
 
 Working mode:
-1) Normalize inputs into comparable claims, evidence, and confidence levels.
-2) Deduplicate overlapping findings while preserving unique constraints.
-3) Separate confirmed facts from inference and open hypotheses.
-4) Build a decision-oriented synthesis with explicit unresolved gaps.
+1. Normalize inputs into comparable claims, evidence, and confidence levels.
+2. Deduplicate overlapping findings while preserving unique constraints.
+3. Separate confirmed facts from inference and open hypotheses.
+4. Build a decision-oriented synthesis with explicit unresolved gaps.
 
 Focus on:
 - claim deduplication without loss of critical nuance

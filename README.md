@@ -1,10 +1,3 @@
-<a href="https://github.com/VoltAgent/voltagent">
-<img width="1500" height="500" alt="Group 32" src="https://github.com/user-attachments/assets/55b97c47-8506-4be0-b18f-f5384d063cbb" />
-</a>
-
-<br />
-<br/>
-
 <div align="center">
     <strong>The awesome collection of Codex subagents.</strong>
     <br />
@@ -14,15 +7,8 @@
 <div align="center">
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-<a href="https://github.com/VoltAgent/voltagent">
-  <img alt="VoltAgent" src="https://cdn.voltagent.dev/website/logo/logo-2-svg.svg" height="20" />
-</a>
+![Subagent Count](https://img.shields.io/badge/subagents-135-blue?style=flat-square)
 
-[![AI Agent Papers](https://img.shields.io/badge/AI%20Agent-Research%20Papers-b31b1b)](https://github.com/VoltAgent/awesome-ai-agent-papers)
-![Subagent Count](https://img.shields.io/badge/subagents-132+-blue?style=flat-square)
-[![Last Update](https://img.shields.io/github/last-commit/VoltAgent/awesome-codex-subagents?label=Last%20update&style=flat-square)](https://github.com/VoltAgent/awesome-codex-subagents)
-[![Discord](https://img.shields.io/discord/1361559153780195478.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://s.voltagent.dev/discord)
-[![GitHub forks](https://img.shields.io/github/forks/VoltAgent/awesome-codex-subagents?style=social)](https://github.com/VoltAgent/awesome-codex-subagents/network/members)
 
 </div>
 
@@ -36,41 +22,73 @@ This repository serves as the definitive collection of Codex subagents, speciali
 
 ## Installation
 
-### Option 1: Manual Installation
+Use Codex custom agent directories exactly as documented:
 
-1. Clone this repository
-2. Copy desired agent files to:
-   - `~/.codex/agents/` for global access
-   - `.codex/agents/` for project-specific use
-3. Customize based on your project requirements
+- `~/.codex/agents/` for global agents (available in all projects)
+- `.codex/agents/` for project-specific agents (higher precedence in that repo)
 
-### Option 2: Interactive Installer
+1. Clone this repository.
+2. Copy the `.toml` agent files you want into one of the directories above.
+3. Restart or refresh your Codex session if needed.
+4. Delegate explicitly in prompts (Codex does not auto-spawn custom subagents).
+
+Examples:
 ```bash
-git clone https://github.com/VoltAgent/awesome-codex-subagents.git
-cd awesome-codex-subagents
-./install-agents.sh
+mkdir -p ~/.codex/agents
+cp categories/01-core-development/backend-developer.toml ~/.codex/agents/
 ```
-This interactive script lets you browse categories, select agents, and install/uninstall them with a single command.
 
-### Option 3: Standalone Installer (no clone required)
 ```bash
-curl -sO https://raw.githubusercontent.com/VoltAgent/awesome-codex-subagents/main/install-agents.sh
-chmod +x install-agents.sh
-./install-agents.sh
+mkdir -p .codex/agents
+cp categories/04-quality-security/reviewer.toml .codex/agents/
 ```
-Downloads agents directly from GitHub without cloning the repository. Requires `curl`.
 
-### Option 4: Agent Installer (use Codex to install agents)
-```bash
-curl -s https://raw.githubusercontent.com/VoltAgent/awesome-codex-subagents/main/categories/09-meta-orchestration/agent-installer.toml -o ~/.codex/agents/agent-installer.toml
+If you use agent configuration in Codex, keep it in `.codex/config.toml` under `[agents]` as described in the official docs.
+
+
+### Subagent Storage Locations
+
+| Type | Path | Availability | Precedence |
+|------|------|--------------|------------|
+| Project Subagents | `.codex/agents/` | Current project only | Higher |
+| Global Subagents | `~/.codex/agents/` | All projects | Lower |
+
+Note: When naming conflicts occur, project-specific subagents override global ones.
+
+
+## Subagent Structure
+
+Each subagent uses a Codex-native `.toml` format:
+
+```toml
+name = "subagent-name"
+description = "When this agent should be invoked"
+model = "gpt-5.3-codex-spark"
+model_reasoning_effort = "medium"
+sandbox_mode = "read-only"
+
+[instructions]
+text = """
+You are a [role description and expertise areas]...
+
+[Agent-specific checklists, patterns, and guidelines]...
+"""
 ```
-Then in Codex: "Use the agent-installer to show me available categories" or "Find PHP agents and install php-pro globally".
 
-<br />
+### Smart Model Routing
 
-<a href="https://github.com/VoltAgent/voltagent">
-<img width="1390" height="296" alt="social" src="https://github.com/user-attachments/assets/5d8822c0-e97b-4183-a71e-a922ab88e1a0" />
-</a>
+Each subagent includes a `model` field that automatically routes it to the right model -- balancing quality and cost:
+
+| Model | When It's Used | Examples |
+|-------|----------------|----------|
+| `gpt-5.4` | Deep reasoning -- architecture reviews, security audits, financial logic | `security-auditor`, `architect-reviewer`, `fintech-engineer` |
+| `gpt-5.3-codex-spark` | Fast scanning, synthesis, and lighter research tasks | `search-specialist`, `docs-researcher`, `agent-installer` |
+
+### Sandbox Mode Philosophy
+
+Each subagent's `sandbox_mode` field controls filesystem access:
+- **Read-only agents** (reviewers, auditors): `sandbox_mode = "read-only"` - analyze without modifying
+- **Workspace-write agents** (developers, engineers): `sandbox_mode = "workspace-write"` - create and modify files
 
 
 ## Categories
@@ -123,9 +141,10 @@ Language-specific experts with deep framework knowledge.
 - [**vue-expert**](categories/02-language-specialists/vue-expert.toml) - Vue 3 Composition API expert
 
 
-### [03. Infrastructure](categories/03-infrastructure/)
+<details>
+<summary><b>03. Infrastructure</b> — DevOps, cloud, and deployment specialists (16 agents)</summary>
 
-DevOps, cloud, and deployment specialists.
+### [03. Infrastructure](categories/03-infrastructure/)
 
 - [**azure-infra-engineer**](categories/03-infrastructure/azure-infra-engineer.toml) - Azure infrastructure and Az PowerShell automation expert
 - [**cloud-architect**](categories/03-infrastructure/cloud-architect.toml) - AWS/GCP/Azure specialist
@@ -144,9 +163,12 @@ DevOps, cloud, and deployment specialists.
 - [**terragrunt-expert**](categories/03-infrastructure/terragrunt-expert.toml) - Terragrunt orchestration and DRY IaC specialist
 - [**windows-infra-admin**](categories/03-infrastructure/windows-infra-admin.toml) - Active Directory, DNS, DHCP, and GPO automation specialist
 
-### [04. Quality & Security](categories/04-quality-security/)
+</details>
 
-Testing, security, and code quality experts.
+<details>
+<summary><b>04. Quality & Security</b> — Testing, security, and code quality experts (16 agents)</summary>
+
+### [04. Quality & Security](categories/04-quality-security/)
 
 - [**accessibility-tester**](categories/04-quality-security/accessibility-tester.toml) - A11y compliance expert
 - [**ad-security-reviewer**](categories/04-quality-security/ad-security-reviewer.toml) - Active Directory security and GPO audit specialist
@@ -165,9 +187,12 @@ Testing, security, and code quality experts.
 - [**security-auditor**](categories/04-quality-security/security-auditor.toml) - Security vulnerability expert
 - [**test-automator**](categories/04-quality-security/test-automator.toml) - Test automation framework expert
 
-### [05. Data & AI](categories/05-data-ai/)
+</details>
 
-Data engineering, ML, and AI specialists.
+<details>
+<summary><b>05. Data & AI</b> — Data engineering, ML, and AI specialists (12 agents)</summary>
+
+### [05. Data & AI](categories/05-data-ai/)
 
 - [**ai-engineer**](categories/05-data-ai/ai-engineer.toml) - AI system design and deployment expert
 - [**data-analyst**](categories/05-data-ai/data-analyst.toml) - Data insights and visualization specialist
@@ -182,9 +207,12 @@ Data engineering, ML, and AI specialists.
 - [**postgres-pro**](categories/05-data-ai/postgres-pro.toml) - PostgreSQL database expert
 - [**prompt-engineer**](categories/05-data-ai/prompt-engineer.toml) - Prompt optimization specialist
 
-### [06. Developer Experience](categories/06-developer-experience/)
+</details>
 
-Tooling and developer productivity experts.
+<details>
+<summary><b>06. Developer Experience</b> — Tooling and developer productivity experts (13 agents)</summary>
+
+### [06. Developer Experience](categories/06-developer-experience/)
 
 - [**build-engineer**](categories/06-developer-experience/build-engineer.toml) - Build system specialist
 - [**cli-developer**](categories/06-developer-experience/cli-developer.toml) - Command-line tool creator
@@ -200,9 +228,12 @@ Tooling and developer productivity experts.
 - [**slack-expert**](categories/06-developer-experience/slack-expert.toml) - Slack platform and @slack/bolt specialist
 - [**tooling-engineer**](categories/06-developer-experience/tooling-engineer.toml) - Developer tooling specialist
 
-### [07. Specialized Domains](categories/07-specialized-domains/)
+</details>
 
-Domain-specific technology experts.
+<details>
+<summary><b>07. Specialized Domains</b> — Domain-specific technology experts (12 agents)</summary>
+
+### [07. Specialized Domains](categories/07-specialized-domains/)
 
 - [**api-documenter**](categories/07-specialized-domains/api-documenter.toml) - API documentation specialist
 - [**blockchain-developer**](categories/07-specialized-domains/blockchain-developer.toml) - Web3 and crypto specialist
@@ -217,9 +248,12 @@ Domain-specific technology experts.
 - [**risk-manager**](categories/07-specialized-domains/risk-manager.toml) - Risk assessment and management expert
 - [**seo-specialist**](categories/07-specialized-domains/seo-specialist.toml) - Search engine optimization expert
 
-### [08. Business & Product](categories/08-business-product/)
+</details>
 
-Product management and business analysis.
+<details>
+<summary><b>08. Business & Product</b> — Product management and business analysis (11 agents)</summary>
+
+### [08. Business & Product](categories/08-business-product/)
 
 - [**business-analyst**](categories/08-business-product/business-analyst.toml) - Requirements specialist
 - [**content-marketer**](categories/08-business-product/content-marketer.toml) - Content marketing specialist
@@ -233,9 +267,12 @@ Product management and business analysis.
 - [**ux-researcher**](categories/08-business-product/ux-researcher.toml) - User research expert
 - [**wordpress-master**](categories/08-business-product/wordpress-master.toml) - WordPress development and optimization expert
 
-### [09. Meta & Orchestration](categories/09-meta-orchestration/)
+</details>
 
-Agent coordination and meta-programming.
+<details>
+<summary><b>09. Meta & Orchestration</b> — Agent coordination and meta-programming (12 agents)</summary>
+
+### [09. Meta & Orchestration](categories/09-meta-orchestration/)
 
 - [**agent-installer**](categories/09-meta-orchestration/agent-installer.toml) - Browse and install agents from this repository via GitHub
 - [**agent-organizer**](categories/09-meta-orchestration/agent-organizer.toml) - Multi-agent coordinator
@@ -247,12 +284,14 @@ Agent coordination and meta-programming.
 - [**performance-monitor**](categories/09-meta-orchestration/performance-monitor.toml) - Agent performance optimization
 - [**pied-piper**](https://github.com/sathish316/pied-piper/) - Orchestrate Team of AI Subagents for repetitive SDLC workflows
 - [**task-distributor**](categories/09-meta-orchestration/task-distributor.toml) - Task allocation specialist
-- [**taskade**](https://github.com/taskade/mcp) - AI-powered workspace with autonomous agents, real-time collaboration, and workflow automation with MCP integration
 - [**workflow-orchestrator**](categories/09-meta-orchestration/workflow-orchestrator.toml) - Complex workflow automation
 
-### [10. Research & Analysis](categories/10-research-analysis/)
+</details>
 
-Research, search, and analysis specialists.
+<details>
+<summary><b>10. Research & Analysis</b> — Research, search, and analysis specialists (7 agents)</summary>
+
+### [10. Research & Analysis](categories/10-research-analysis/)
 
 - [**competitive-analyst**](categories/10-research-analysis/competitive-analyst.toml) - Competitive intelligence specialist
 - [**data-researcher**](categories/10-research-analysis/data-researcher.toml) - Data discovery and analysis expert
@@ -261,6 +300,8 @@ Research, search, and analysis specialists.
 - [**research-analyst**](categories/10-research-analysis/research-analyst.toml) - Comprehensive research specialist
 - [**search-specialist**](categories/10-research-analysis/search-specialist.toml) - Advanced information retrieval expert
 - [**trend-analyst**](categories/10-research-analysis/trend-analyst.toml) - Emerging trends and forecasting expert
+
+</details>
 
 ## Understanding Subagents
 
@@ -303,74 +344,6 @@ Investigate the broken settings flow. Have code_mapper trace the owning code pat
 ```text
 Use search_specialist to locate the code related to payment retries, knowledge_synthesizer to summarize the current design, and refactoring_specialist to propose a minimal refactor plan. Return a concrete action list.
 ```
-
-### Subagent Storage Locations
-
-| Type | Path | Availability | Precedence |
-|------|------|--------------|------------|
-| Project Subagents | `.codex/agents/` | Current project only | Higher |
-| Global Subagents | `~/.codex/agents/` | All projects | Lower |
-
-Note: When naming conflicts occur, project-specific subagents override global ones.
-
-
-## Subagent Structure
-
-Each subagent uses a Codex-native `.toml` format:
-
-```toml
-name = "subagent-name"
-description = "When this agent should be invoked"
-model = "gpt-5.3-codex-spark"
-model_reasoning_effort = "medium"
-sandbox_mode = "read-only"
-
-[instructions]
-text = """
-You are a [role description and expertise areas]...
-
-[Agent-specific checklists, patterns, and guidelines]...
-"""
-```
-
-### Smart Model Routing
-
-Each subagent includes a `model` field that automatically routes it to the right model -- balancing quality and cost:
-
-| Model | When It's Used | Examples |
-|-------|----------------|----------|
-| `gpt-5.4` | Deep reasoning -- architecture reviews, security audits, financial logic | `security-auditor`, `architect-reviewer`, `fintech-engineer` |
-| `gpt-5.3-codex-spark` | Everyday coding -- writing, debugging, refactoring | `python-pro`, `backend-developer`, `devops-engineer` |
-
-### Sandbox Mode Philosophy
-
-Each subagent's `sandbox_mode` field controls filesystem access:
-- **Read-only agents** (reviewers, auditors): `sandbox_mode = "read-only"` - analyze without modifying
-- **Workspace-write agents** (developers, engineers): `sandbox_mode = "workspace-write"` - create and modify files
-
-## MCP-Backed Agents
-
-This repo includes several agents that assume an MCP server is available:
-
-- `docs_researcher` uses the OpenAI developer docs MCP endpoint
-- `browser_debugger` assumes a Chrome DevTools MCP server is available
-- `mcp_developer` is designed to work on MCP servers and integrations
-
-If an MCP-backed agent is missing its server, fall back to a read-only analysis agent instead of forcing the workflow.
-
-## Validate The Repo
-
-```bash
-python3 tools/validate_repo.py
-```
-
-The validator checks:
-- category `README.md` files exist
-- agent files are valid TOML
-- required fields exist
-- filenames match `name`
-- agent names are unique
-
 ## Contributing
 
 We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
@@ -379,9 +352,6 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 - Improve existing definitions
 - Report issues and bugs
 
-## Contributor Thanks
-![Contributors](https://contrib.rocks/image?repo=voltagent/awesome-codex-subagents&max=500&columns=20&anon=1)
-
 
 ## License
 
@@ -389,4 +359,4 @@ MIT License - see [LICENSE](LICENSE)
 
 This repository is a curated collection of subagent definitions contributed by both the maintainers and the community. All subagents are provided "as is" without warranty. We do not audit or guarantee the security or correctness of any subagent. Review before use, the maintainers accept no liability for any issues arising from their use.
 
-If you find an issue with a listed subagent or want your contribution removed, please [open an issue](https://github.com/VoltAgent/awesome-codex-subagents/issues) and we'll address it promptly.
+If you find an issue with a listed subagent or want your contribution removed, please open an issue in this repository and we'll address it promptly.
